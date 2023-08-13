@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="preconnect" href="https://fonts.googleapis.com"> 
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="{{url_for('static', filename="css/report.css")}}">
+    </head>
+    <body>
+    <!-- 
+        {% for fig in figs %}
+        <img src="{{url_for('static', filename=fig)}}">
+
+        {% endfor %}
+
+        {% for k,v in report.items() %}
+        <br>
+        <h3> {{ k }} </h3>
+        {% endfor %} 
+    -->
+
+        <div class="box left-box" id="left-box">
+            <div class="box-bg">
+                Visualize Charts</br>
+                <input type="button" value="Surface Area vs Time" class="btn-chart" id="SAvT"> <br>
+                <input type="button" value="Volume vs Time" class="btn-chart" id="VvT"> <br>
+            </div>
+            <input type="button" value="Back" onclick="history.back()" class="btn-chart">
+
+        </div>
+
+        <div class="box right-box" id="right-box">
+            <img src="/static/images/Surface Area.png" class="img graph-image" id="Surface-Area">
+            <img src="/static/images/Volume.png" class="img graph-image" id="Volume">
+        </div>
+
+        
+
+
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+        <script src="{{url_for('static', filename='js/scripts.js')}}" async defer></script>
+        <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+    </body>
+</html> 

@@ -1,0 +1,66 @@
+html {
+    background-color: #E4E9FD;
+    background-image: -webkit-linear-gradient(65deg, #A683E3 50%, #E4E9FD 50%);
+    min-height: 1000px;
+    font-family: 'Roboto', sans-serif;
+  }
+
+  .btn-chart{
+    color: #000;
+    background-color: whitesmoke;
+    border-radius: 2rem;
+    font-size : 1.2rem;
+    padding: 0.5rem 1.6rem;
+  
+  }
+
+  .btn-chart:active{
+    background-color: rgb(205, 203, 203);
+  }
+
+
+.box{
+    font-size: 30px;
+    padding: 20vh 0 0 0;
+    /* display: flex; */
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    width:48%;
+    float: left; 
+    font-weight: 800;
+    font-size: 2.5rem;
+}
+
+.box-bg{
+    width: 60%;
+    margin: 50px auto;
+    background: white;
+    border-radius: 1rem;
+    box-shadow: 5px 5px 15px -5px rgba(0, 0, 0, 0.3);
+    padding: 1rem;
+}
+
+.left-box{
+    padding: 25vh 0 0 0;
+}
+
+.addedClass{
+    background-color: aqua;
+    visibility: hidden;
+}
+
+.graph-image{
+    visibility: hidden;
+    display: none;
+}
+
+.image-visible{
+    visibility: visible;
+}
+
+.img{
+    border-radius: 3rem;
+}
+

@@ -1,0 +1,84 @@
+html {
+    background-color: #E4E9FD;
+    background-image: -webkit-linear-gradient(65deg, #A683E3 50%, #E4E9FD 50%);
+    min-height: 1000px;
+    font-family: 'helvetica neue';
+  }
+  
+  h1 {
+    color: #fff;
+    padding: 10px;
+  }
+  
+  .box {
+    width: 60%;
+    margin: 50px auto;
+    background: white;
+    border-radius: 1rem;
+    box-shadow: 5px 5px 15px -5px rgba(0, 0, 0, 0.3);
+    padding: 1rem;
+  }
+
+  th{
+    padding: 1rem 0 2rem 0;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 800;
+    font-size: 2rem;
+  }
+    
+
+  
+  form {
+    text-align: center;
+    margin-left: 20px;
+  }
+  
+
+.button{
+  color: #000;
+  background-color: whitesmoke;
+  border-radius: 2rem;
+  font-size : 1.2rem;
+  padding: 0.5rem 1.6rem;
+}
+
+.button:active{
+  background-color: rgb(205, 203, 203);
+}
+
+.submit-btn{
+  text-align: center;
+  height: 3rem;
+}
+  
+  input[type="number"] {
+    text-align: center;
+    height: 3rem;
+    top: 10px;
+    border: none;
+    background: transparent;
+    font-size: 20px;
+    font-weight: 200;
+    width: 80%;
+    border-width: 5px;
+    background-color: #d3d3d34f;
+    border-radius: 0.5rem;
+  }
+  
+  input[type="number"]:focus {
+    outline: none;
+    box-shadow: inset 0 -3px 0 0 #A683E3;
+  }
+  
+  ::placeholder {
+    color: grey;
+    opacity: 1;
+    font-family: 'Roboto', sans-serif;
+  }
+  
+  footer {
+    color: white;
+    color: rgba(0, 0, 0, 0.5);
+    text-align: center;
+  }
+  
