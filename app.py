@@ -61,8 +61,12 @@ def getSA_AB_P(l,d,di,nh,a,p,n,dt, cstar, STEP_SIZE):
     ab_list = []
     p_list = []
     
-    #calculated
-    at = math.pi * dt**2 /4
+    #calculated 
+    if dt != 0:
+        at = math.pi * dt**2 / 4
+    else:
+        at = 1 
+   
     rho = 1
     
     #initial values
@@ -84,7 +88,10 @@ def getSA_AB_P(l,d,di,nh,a,p,n,dt, cstar, STEP_SIZE):
         
         print(abCurr)
         saCurr = saCurr - abCurr
-        pCurr = abCurr/at * (a*rho*cstar/9800) ** (1/(1-n))
+        if a * rho * cstar != 0 and (1 - n) != 0:
+            pCurr = abCurr/at * (a*rho*cstar/9800) ** (1/(1-n))
+        else:
+            pCurr = 0
         
         sa_list.append(saCurr)
         ab_list.append(abCurr)
@@ -146,7 +153,10 @@ def report():
             
         sa_list, ab_list, p_list = getSA_AB_P(L,D,d,n,a,p,N,dt, cstar, STEP_SIZE)
         vol_list = getVolume(L,D,d,n,a,p,N, br, STEP_SIZE)
-                       
+
+        time_interp = np.linspace(0, len(p_list) * STEP_SIZE, len(steps))
+        p_interp = np.interp(time_interp, np.arange(0, len(p_list) * STEP_SIZE, STEP_SIZE), p_list)
+
         plt.figure()
         plt.plot(steps, vols)
         plt.title("Vols vs Time")
@@ -162,6 +172,35 @@ def report():
         plt.ylabel("Surface Area")
         # plt.legend()
         plt.savefig('static/images/Surface Area.png')
+
+        plt.figure()
+        plt.plot(steps, p_interp, label='Pressure')
+        plt.title("Pressure vs Time")
+        plt.xlabel("Time")
+        plt.ylabel("Pressure")
+        plt.legend()
+        plt.savefig('static/images/Pressure.png')
+         # Dummy data for burn rate vs time (Deep Learning with RCNN)
+        time_values_dlrcnn = [0, 1, 2, 3, 4, 5]
+        burn_rate_dlrcnn_values = [20, 23, 26, 28, 30, 32]
+        
+        plt.figure()
+        plt.plot(time_values_dlrcnn, burn_rate_dlrcnn_values)
+        plt.title("Burn Rate vs Time (Model: Deep Learning with RCNN)")
+        plt.xlabel("Time")
+        plt.ylabel("Burn Rate")
+        plt.savefig('static/images/BurnRateDLRCNN.png')
+        
+        # Dummy data for burn rate vs time (Deep Learning RND Methodology)
+        time_values_dlrnd = [0, 1, 2, 3, 4, 5]
+        burn_rate_dlrnd_values = [45, 47, 50, 52, 54, 56]
+        
+        plt.figure()
+        plt.plot(time_values_dlrnd, burn_rate_dlrnd_values)
+        plt.title("Burn Rate vs Time (Model: Deep Learning RND Methodology)")
+        plt.xlabel("Time")
+        plt.ylabel("Burn Rate")
+        plt.savefig('static/images/BurnRateDLRND.png')
         
         os.chdir(os.getcwd())
         figs = os.listdir('static/images')
