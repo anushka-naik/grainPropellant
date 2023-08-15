@@ -29,46 +29,60 @@
                         <tbody>
                             <tr>    
                                 <td> Diameter </td>
-                                <td><input type="number" name="Dstart" placeholder="Range Start" required></td>
-                                <td><input type="number" name="Dend" placeholder="Range End" required></td>
-                                <td><input type="number" name="Dstep" placeholder="Step Size" required></td>
+                                <td><input type="text" name="Dstart" placeholder="Range Start" required pattern="[0-9]+(\.[0-9]+)?" title="Please enter a valid floating-point number"></td>
+                                <td><input type="text" name="Dend" placeholder="Range End" required pattern="[0-9]+(\.[0-9]+)?" title="Please enter a valid floating-point number"></td>
+                                <td><input type="text" name="Dstep" placeholder="Step Size" required pattern="[0-9]+(\.[0-9]+)?" title="Please enter a valid floating-point number"></td>
                             </tr>
                             <tr>
                                 <td> Internal Diameter </td>
-                                <td><input type="number" name="Distart" placeholder="Range Start"required></td>
-                                <td><input type="number" name="Diend" placeholder="Range End" required></td>
-                                <td><input type="number" name="Distep" placeholder="Step Size" required></td>
+                                <td><input type="text" name="Distart" placeholder="Range Start" required pattern="[0-9]+(\.[0-9]+)?" title="Please enter a valid floating-point number"></td>
+                                <td><input type="text" name="Diend" placeholder="Range End" required pattern="[0-9]+(\.[0-9]+)?" title="Please enter a valid floating-point number"></td>
+                                <td><input type="text" name="Distep" placeholder="Step Size" required pattern="[0-9]+(\.[0-9]+)?" title="Please enter a valid floating-point number"></td>
                             </tr>
                             <tr>
                                 <td> Grain Length </td>
-                                <td><input type="number" name="Gstart" placeholder="Range Start"required></td>
-                                <td><input type="number" name="Gend" placeholder="Range End" required></td>
-                                <td><input type="number" name="Gstep" placeholder="Step Size" required></td>
+                                <td><input type="text" name="Gstart" placeholder="Range Start" required pattern="[0-9]+(\.[0-9]+)?" title="Please enter a valid floating-point number"></td>
+                                <td><input type="text" name="Gend" placeholder="Range End" required pattern="[0-9]+(\.[0-9]+)?" title="Please enter a valid floating-point number"></td>
+                                <td><input type="text" name="Gstep" placeholder="Step Size" required pattern="[0-9]+(\.[0-9]+)?" title="Please enter a valid floating-point number"></td>
                             </tr>
                             <tr>
                                 <td> Burn Rate Coefficient (a)</td>
-                                <td><input type="number" name="astart" placeholder="Range Start"required></td>
-                                <td><input type="number" name="aend" placeholder="Range End" required></td>
-                                <td><input type="number" name="astep" placeholder="Step Size" required></td>
+                                <td><input type="text" name="astart" placeholder="Range Start" required pattern="[0-9]+(\.[0-9]+)?" title="Please enter a valid floating-point number"></td>
+                                <td><input type="text" name="aend" placeholder="Range End" required pattern="[0-9]+(\.[0-9]+)?" title="Please enter a valid floating-point number"></td>
+                                <td><input type="text" name="astep" placeholder="Step Size" required pattern="[0-9]+(\.[0-9]+)?" title="Please enter a valid floating-point number"></td>
                             </tr>
                             <tr>
                                 <td> Pressure </td>
-                                <td><input type="number" name="Pstart" placeholder="Range Start"required></td>
-                                <td><input type="number" name="Pend" placeholder="Range End" required></td>
-                                <td><input type="number" name="Pstep" placeholder="Step Size" required></td>
+                                <td><input type="text" name="Pstart" placeholder="Range Start" required pattern="[0-9]+(\.[0-9]+)?" title="Please enter a valid floating-point number"></td>
+                                <td><input type="text" name="Pend" placeholder="Range End" required pattern="[0-9]+(\.[0-9]+)?" title="Please enter a valid floating-point number"></td>
+                                <td><input type="text" name="Pstep" placeholder="Step Size" required pattern="[0-9]+(\.[0-9]+)?" title="Please enter a valid floating-point number"></td>
                             </tr>
                             <tr>
                                 <td> Burn Rate Coefficient (n) </td>
-                                <td><input type="number" name="Nstart" placeholder="Range Start"required></td>
-                                <td><input type="number" name="Nend" placeholder="Range End" required></td>
-                                <td><input type="number" name="Nstep" placeholder="Step Size" required></td>
+                                <td><input type="text" name="Nstart" placeholder="Range Start" required pattern="[0-9]+(\.[0-9]+)?" title="Please enter a valid floating-point number"></td>
+                                <td><input type="text" name="Nend" placeholder="Range End" required pattern="[0-9]+(\.[0-9]+)?" title="Please enter a valid floating-point number"></td>
+                                <td><input type="text" name="Nstep" placeholder="Step Size" required pattern="[0-9]+(\.[0-9]+)?" title="Please enter a valid floating-point number"></td>
                             </tr>
                             <tr>
                                 <td> Number of Holes </td>
-                                <td><input type="number" name="Nhstart" placeholder="Range Start"required></td>
-                                <td><input type="number" name="Nhend" placeholder="Range End" required></td>
-                                <td><input type="number" name="Nhstep" placeholder="Step Size" required></td>
+                                <td><input type="text" name="Nhstart" placeholder="Range Start" required pattern="[0-9]+(\.[0-9]+)?" title="Please enter a valid floating-point number"></td>
+                                <td><input type="text" name="Nhend" placeholder="Range End" required pattern="[0-9]+(\.[0-9]+)?" title="Please enter a valid floating-point number"></td>
+                                <td><input type="text" name="Nhstep" placeholder="Step Size" required pattern="[0-9]+(\.[0-9]+)?" title="Please enter a valid floating-point number"></td>
                             </tr>
+
+                            <tr>
+                                <td> C Star (C*) </td>
+                                <td><input type="text" name="Cstart" placeholder="Range Start" required pattern="[0-9]+(\.[0-9]+)?" title="Please enter a valid floating-point number"></td>
+                                <td><input type="text" name="Cend" placeholder="Range End" required pattern="[0-9]+(\.[0-9]+)?" title="Please enter a valid floating-point number"></td>
+                                <td><input type="text" name="Cstep" placeholder="Step Size" required pattern="[0-9]+(\.[0-9]+)?" title="Please enter a valid floating-point number"></td>
+                            </tr>
+                            <tr>
+                                <td> Throat Diameter </td>
+                                <td><input type="text" name="Dtstart" placeholder="Range Start" required pattern="[0-9]+(\.[0-9]+)?" title="Please enter a valid floating-point number"></td>
+                                <td><input type="text" name="Dtend" placeholder="Range End" required pattern="[0-9]+(\.[0-9]+)?" title="Please enter a valid floating-point number"></td>
+                                <td><input type="text" name="Dtstep" placeholder="Step Size" required pattern="[0-9]+(\.[0-9]+)?" title="Please enter a valid floating-point number"></td>
+                            </tr>
+                            
                             <!--<tr colspan=2>
                                 <td> Step Size (For Volume/Surface Area) </td>
                                 <td><input type="number" name="VolStep" placeholder="Volume Step" required></td>

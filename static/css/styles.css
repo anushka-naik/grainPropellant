@@ -51,7 +51,7 @@ html {
   height: 3rem;
 }
   
-  input[type="number"] {
+  input[type="text"] {
     text-align: center;
     height: 3rem;
     top: 10px;
@@ -65,7 +65,7 @@ html {
     border-radius: 0.5rem;
   }
   
-  input[type="number"]:focus {
+  input[type="text"]:focus {
     outline: none;
     box-shadow: inset 0 -3px 0 0 #A683E3;
   }
@@ -75,6 +75,8 @@ html {
     opacity: 1;
     font-family: 'Roboto', sans-serif;
   }
+
+  
   
   footer {
     color: white;
