@@ -14,6 +14,25 @@ import pandas as pd
 import time
 import os
 import torch
+import pandas as pd
+import numpy as np
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import MinMaxScaler
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import GRU, Dense
+from sklearn.svm import SVR
+from sklearn.multioutput import MultiOutputRegressor
+from sklearn.metrics import mean_squared_error
+from flask import Flask, render_template, request, jsonify
+import numpy as np
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import GRU, Dense
+from tensorflow.keras.callbacks import LambdaCallback
+import os
+from tensorflow.keras.callbacks import Callback
+
+from models import gru_model
+
 
 STEP_SIZE = 0.1
 
@@ -414,6 +433,10 @@ def databaseReport():
         return render_template("databaseReport.html")
 
 
+@app.route('/run_gru', methods=['POST'])
+def run_gru():
+    gru_model()
+    return jsonify({"message": "GRU model training started!"})
 
 
 # @app.route('/showVar/<varName>')

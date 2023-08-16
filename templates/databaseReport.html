@@ -11,9 +11,33 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
         <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="{{url_for('static', filename='css/index.css')}}">
+        <title>Run GRU</title>
+        <script>
+            function trainModel() {
+                // Create an XMLHttpRequest object
+                const xhr = new XMLHttpRequest();
+
+                // Configure the request
+                xhr.open("POST", "/run_gru", true);
+                xhr.setRequestHeader("Content-Type", "application/json");
+
+                // Define what to do when the request completes
+                xhr.onreadystatechange = function() {
+                    if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
+                        console.log("Function executed successfully:", xhr.responseText);
+                    }
+                };
+
+                // Send the request
+                xhr.send();
+            }
+        </script>
     </head>
     <body>
        <h1> The dataset "Database.csv" has been created </h1>
+
+       <button onclick="trainModel()">Run GRU Model</button>
+
         <script src="" async defer></script>
     </body>
 </html>
