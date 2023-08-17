@@ -38,6 +38,7 @@ from sklearn.svm import SVR
 from sklearn.multioutput import MultiOutputRegressor
 from sklearn.metrics import mean_squared_error
 from sklearn.model_selection import train_test_split
+from keras.models import load_model
 
 from models import gru_model, lstm_model, svr_model
 
@@ -155,6 +156,21 @@ def report():
         dt = float(request.form.get('dt'))
         cstar = float(request.form.get('cstar'))
         report = request.form
+        
+        #predictions
+        InitVolume = pi/4 * (D**2 -n*d**2) * L
+        InitSA = math.pi * D**2 /4 * L + math.pi * d**2 /4 * L * n
+        
+        #lstm
+        model = load_model('./models/lstm/lstm_model_final.h5')
+        ip = np.array([L, d, D, n, a, p, N, cstar, dt, InitVolume, InitSA]).reshape(1, 1, 11)
+        lstm_predictions = model.predict(ip)
+        
+        #gru
+        model = load_model('./models/gru/gru_model_final.h5')
+        ip = np.array([L, d, D, n, a, p, N, cstar, dt, InitVolume, InitSA]).reshape(1, 11, 1)
+        gru_predictions = model.predict(ip)
+        
 
         vols=[]
         sas=[]

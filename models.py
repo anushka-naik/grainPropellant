@@ -219,6 +219,8 @@ def lstm_model(num_epochs, batch_size, save_freq):
     # Prediction
     predictions = model.predict(X_test[0].reshape(1, X_test.shape[1], X_test.shape[2]))
     
+    print(X_test[0])
+    
     print("PREDICTIONS")
     print(predictions)
     
