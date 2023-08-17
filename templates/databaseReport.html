@@ -10,59 +10,118 @@
         <link rel="preconnect" href="https://fonts.googleapis.com"> 
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
         <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="{{url_for('static', filename='css/index.css')}}">
+        <link rel="stylesheet" href="{{url_for('static', filename='css/databaseReport.css')}}">
         <title>Run GRU</title>
         <script>
-            function trainModel() {
-                // Create an XMLHttpRequest object
+            function trainModel(event, actionUrl) {
+                event.preventDefault(); // Prevent form from submitting the traditional way
+                
+                const form = event.target;
+            
+                const data = {
+                    num_epochs: form.num_epochs.value,
+                    batch_size: form.batch_size.value,
+                    save_frequency: form.save_frequency.value
+                };
+            
                 const xhr = new XMLHttpRequest();
-            
-                // Extract values from the form
-                let num_epochs = document.getElementById("num_epochs").value;
-                let batch_size = document.getElementById("batch_size").value;
-                let save_frequency = document.getElementById("save_frequency").value;
-            
-                // Configure the request
-                xhr.open("POST", "/run_gru", true);
+                xhr.open("POST", actionUrl, true);
                 xhr.setRequestHeader("Content-Type", "application/json");
             
-                // Define what to do when the request completes
                 xhr.onreadystatechange = function() {
                     if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
                         console.log("Function executed successfully:", xhr.responseText);
                     }
                 };
             
-                // Send the request with JSON payload
-                xhr.send(JSON.stringify({
-                    num_epochs: num_epochs,
-                    batch_size: batch_size,
-                    save_frequency: save_frequency
-                }));
+                xhr.send(JSON.stringify(data));
             }
         </script>
     </head>
     <body>
-       <h1> The dataset "Database.csv" has been created </h1>
+        <div>
+        <h1> The dataset "Database.csv" has been created </h1>
+        </div>
 
-       <form id="gruForm">
-        <label>
-            Number of Epochs:
-            <input type="number" id="num_epochs" required>
-        </label>
-        <br>
-        <label>
-            Batch Size:
-            <input type="number" id="batch_size" required>
-        </label>
-        <br>
-        <label>
-            Save Frequency:
-            <input type="number" id="save_frequency" required>
-        </label>
-        <br>
-        <button type="button" onclick="trainModel()">Run GRU Model</button>
-     </form>
+       <table class="outer-table">
+        <tr>
+            <td>
+                <!-- GRU Form -->
+                <div class="model-form">
+                    <h2>GRU</h2>
+                    <form id="gruForm" onsubmit="trainModel(event, '/run_gru')">
+                        <table class="inner-table">
+                            <tr>
+                                <td>Number of Epochs:</td>
+                                <td><input type="number" name="num_epochs" value="100" placeholder="100" required></td>
+                            </tr>
+                            <tr>
+                                <td>Batch Size:</td>
+                                <td><input type="number" name="batch_size" value="32" placeholder="32" required></td>
+                            </tr>
+                            <tr>
+                                <td>Save Frequency:</td>
+                                <td><input type="number" name="save_frequency" value="5" placeholder="5" required></td>
+                            </tr>
+                        </table>
+                        <button type="submit">Run GRU Model</button>
+                    </form>
+                </div>
+            </td>
+            <td>
+            
+                <!-- LSTM Form -->
+                <div class="model-form">
+                    <h2>LSTM</h2>
+                    <form id="lstmForm" onsubmit="trainModel(event, '/run_lstm')">
+                        <table class="inner-table">
+                            <tr>
+                                <td>Number of Epochs:</td>
+                                <td><input type="number" name="num_epochs" value="100" placeholder="100" required></td>
+                            </tr>
+                            <tr>
+                                <td>Batch Size:</td>
+                                <td><input type="number" name="batch_size" value="32" placeholder="32" required></td>
+                            </tr>
+                            <tr>
+                                <td>Save Frequency:</td>
+                                <td><input type="number" name="save_frequency" value="5" placeholder="5" required></td>
+                            </tr>
+                        </table class="inner-table">
+                        <button type="submit">Run LSTM Model</button>
+                    </form>
+                </div>
+            </div>
+           </td>
+           <td>
+                <!-- SVR Form -->
+                <div class="model-form">
+                    <h2>SVR</h2>
+                    <form id="svrForm" onsubmit="trainModel(event, '/run_svr')">
+                        <table>
+                            <tr>
+                                <td> Number of Epochs: </td>
+                                <td> <input type="number" name="num_epochs" value="100" placeholder="100" required> </td>
+                            </tr>
+                            <tr>
+                                <td> Batch Size: </td>
+                                <td> <input type="number" name="batch_size" value="32" placeholder="32" required> </td>
+                            </tr>
+                            <tr>
+                                <td> Save Frequency: </td>
+                                <td> <input type="number" name="save_frequency" value="5" placeholder="5" required> </td>
+                            </tr>
+
+                        </table>
+                        
+                        <button type="submit">Run SVR Model</button>
+                    </form>
+                </div>
+            </td>
+        </tr>
+    </table>
+    
+
        <script src="" async defer></script>
     </body>
 </html>

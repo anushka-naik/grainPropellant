@@ -30,8 +30,16 @@ from tensorflow.keras.layers import GRU, Dense
 from tensorflow.keras.callbacks import LambdaCallback
 import os
 from tensorflow.keras.callbacks import Callback
+import joblib
+import os
+import pandas as pd
+from sklearn.preprocessing import MinMaxScaler
+from sklearn.svm import SVR
+from sklearn.multioutput import MultiOutputRegressor
+from sklearn.metrics import mean_squared_error
+from sklearn.model_selection import train_test_split
 
-from models import gru_model
+from models import gru_model, lstm_model, svr_model
 
 
 STEP_SIZE = 0.1
@@ -118,10 +126,7 @@ def getSA_AB_P(l,d,di,nh,a,p,n,dt, cstar, STEP_SIZE):
         
         x += x
         i+=1 
-        
-    print("HI THERE THIS IS THE SA LIST")
-    print(sa_list)
-        
+           
     return sa_list, ab_list, p_list
 
 
@@ -401,7 +406,7 @@ def databaseReport():
             # df['Volumes'] = ''
             # df['SurfaceAreas'] = ''
             # df['AreaBurnt'] = ''
-            df['Pressure'] = ''
+            # df['Pressure'] = ''
             df['BurnRate'] = ''
             
             # print("chktp1", sys.stdout)
@@ -448,6 +453,35 @@ def run_gru():
 
     return jsonify({"message": "GRU model training started!"})
 
+@app.route('/run_lstm', methods=['POST'])
+def run_lstm():
+    # Parse JSON data from request
+    data = request.get_json()
+    
+    # Extract values from the JSON data
+    num_epochs = int(data.get('num_epochs'))
+    batch_size = int(data.get('batch_size'))
+    save_frequency = int(data.get('save_frequency'))
+
+    # Call gru_model (assuming it will use these values somehow)
+    lstm_model(num_epochs, batch_size, save_frequency)
+
+    return jsonify({"message": "GRU model training started!"})
+
+@app.route('/run_svr', methods=['POST'])
+def run_svr():
+    # Parse JSON data from request
+    data = request.get_json()
+    
+    # Extract values from the JSON data
+    num_epochs = int(data.get('num_epochs'))
+    batch_size = int(data.get('batch_size'))
+    save_frequency = int(data.get('save_frequency'))
+
+    # Call gru_model (assuming it will use these values somehow)
+    svr_model(num_epochs, batch_size, save_frequency)
+
+    return jsonify({"message": "GRU model training started!"})
 
 # @app.route('/showVar/<varName>')
 # def showVar(varName):
