@@ -42,7 +42,7 @@ class CustomCheckpoint(Callback):
 
 
 
-def gru_model():
+def gru_model(num_epochs, batch_size, save_freq):
     df = pd.read_csv('dataset.csv')
     df = df[df['BurnRate'].str.len() > 2]
 
@@ -77,11 +77,11 @@ def gru_model():
     if not os.path.exists('./models/gru/checkpoints/'):
         os.makedirs('./models/gru/checkpoints/')
 
-    checkpoint_callback = CustomCheckpoint(filepath="./models/gru/checkpoints/gru_model_{epoch:02d}.h5", save_freq=5)
+    checkpoint_callback = CustomCheckpoint(filepath="./models/gru/checkpoints/gru_model_{epoch:02d}.h5", save_freq=save_freq)
 
 
     # Training the model with the ModelCheckpoint callback
-    model.fit(X_train_reshaped, Y_train, epochs=11, batch_size=32, validation_data=(X_test_reshaped, Y_test), callbacks=[checkpoint_callback])
+    model.fit(X_train_reshaped, Y_train, epochs=num_epochs, batch_size=batch_size, validation_data=(X_test_reshaped, Y_test), callbacks=[checkpoint_callback])
 
     model.save('./models/gru/gru_model_final.h5')
     

@@ -435,7 +435,17 @@ def databaseReport():
 
 @app.route('/run_gru', methods=['POST'])
 def run_gru():
-    gru_model()
+    # Parse JSON data from request
+    data = request.get_json()
+    
+    # Extract values from the JSON data
+    num_epochs = int(data.get('num_epochs'))
+    batch_size = int(data.get('batch_size'))
+    save_frequency = int(data.get('save_frequency'))
+
+    # Call gru_model (assuming it will use these values somehow)
+    gru_model(num_epochs, batch_size, save_frequency)
+
     return jsonify({"message": "GRU model training started!"})
 
 

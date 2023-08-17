@@ -16,28 +16,53 @@
             function trainModel() {
                 // Create an XMLHttpRequest object
                 const xhr = new XMLHttpRequest();
-
+            
+                // Extract values from the form
+                let num_epochs = document.getElementById("num_epochs").value;
+                let batch_size = document.getElementById("batch_size").value;
+                let save_frequency = document.getElementById("save_frequency").value;
+            
                 // Configure the request
                 xhr.open("POST", "/run_gru", true);
                 xhr.setRequestHeader("Content-Type", "application/json");
-
+            
                 // Define what to do when the request completes
                 xhr.onreadystatechange = function() {
                     if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
                         console.log("Function executed successfully:", xhr.responseText);
                     }
                 };
-
-                // Send the request
-                xhr.send();
+            
+                // Send the request with JSON payload
+                xhr.send(JSON.stringify({
+                    num_epochs: num_epochs,
+                    batch_size: batch_size,
+                    save_frequency: save_frequency
+                }));
             }
         </script>
     </head>
     <body>
        <h1> The dataset "Database.csv" has been created </h1>
 
-       <button onclick="trainModel()">Run GRU Model</button>
-
-        <script src="" async defer></script>
+       <form id="gruForm">
+        <label>
+            Number of Epochs:
+            <input type="number" id="num_epochs" required>
+        </label>
+        <br>
+        <label>
+            Batch Size:
+            <input type="number" id="batch_size" required>
+        </label>
+        <br>
+        <label>
+            Save Frequency:
+            <input type="number" id="save_frequency" required>
+        </label>
+        <br>
+        <button type="button" onclick="trainModel()">Run GRU Model</button>
+     </form>
+       <script src="" async defer></script>
     </body>
 </html>

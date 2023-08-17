@@ -159,3 +159,22 @@ h1 {
 .btn-wrapper {
     text-align: center;
 }
+
+.jumbotron {
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid #ddd;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+}
+
+.model-form {
+  width: 32%;
+  border-left: 1px solid #ddd;
+  padding-left: 10px;
+}
+
+.model-form:first-child {
+  border-left: none;
+}
