@@ -165,11 +165,12 @@ def report():
         model = load_model('./models/lstm/lstm_model_final.h5')
         ip = np.array([L, d, D, n, a, p, N, cstar, dt, InitVolume, InitSA]).reshape(1, 1, 11)
         lstm_predictions = model.predict(ip)
-        
+
         #gru
         model = load_model('./models/gru/gru_model_final.h5')
         ip = np.array([L, d, D, n, a, p, N, cstar, dt, InitVolume, InitSA]).reshape(1, 11, 1)
         gru_predictions = model.predict(ip)
+
         
 
         vols=[]
@@ -194,53 +195,46 @@ def report():
         sa_list, ab_list, p_list = getSA_AB_P(L,D,d,n,a,p,N,dt, cstar, STEP_SIZE)
         vol_list = getVolume(L,D,d,n,a,p,N, br, STEP_SIZE)
 
-        time_interp = np.linspace(0, len(p_list) * STEP_SIZE, len(steps))
-        p_interp = np.interp(time_interp, np.arange(0, len(p_list) * STEP_SIZE, STEP_SIZE), p_list)
 
         plt.figure()
-        plt.plot(steps, vols)
-        plt.title("Vols vs Time")
+        plt.plot(range(len(vol_list)), vol_list)
+        plt.title("Volume vs Time")
         plt.xlabel("Time")
         plt.ylabel("Volume")
-        # plt.legend()
         plt.savefig('static/images/Volume.png')
-        
-        plt.figure()
-        plt.plot(steps, sas)
-        plt.title("Surface Area vs Time")
-        plt.xlabel("Time")
-        plt.ylabel("Surface Area")
-        # plt.legend()
-        plt.savefig('static/images/Surface Area.png')
 
         plt.figure()
-        plt.plot(steps, p_interp, label='Pressure')
+        plt.plot(range(len(p_list)), p_list)
         plt.title("Pressure vs Time")
         plt.xlabel("Time")
         plt.ylabel("Pressure")
-        plt.legend()
         plt.savefig('static/images/Pressure.png')
-         # Dummy data for burn rate vs time (Deep Learning with RCNN)
-        time_values_dlrcnn = [0, 1, 2, 3, 4, 5]
-        burn_rate_dlrcnn_values = [20, 23, 26, 28, 30, 32]
-        
+
         plt.figure()
-        plt.plot(time_values_dlrcnn, burn_rate_dlrcnn_values)
-        plt.title("Burn Rate vs Time (Model: Deep Learning with RCNN)")
+        plt.plot(range(len(sa_list)), sa_list)
+        plt.title("Surface Area vs Time")
         plt.xlabel("Time")
-        plt.ylabel("Burn Rate")
-        plt.savefig('static/images/BurnRateDLRCNN.png')
-        
-        # Dummy data for burn rate vs time (Deep Learning RND Methodology)
-        time_values_dlrnd = [0, 1, 2, 3, 4, 5]
-        burn_rate_dlrnd_values = [45, 47, 50, 52, 54, 56]
-        
+        plt.ylabel("Surface Area")
+        plt.savefig('static/images/Surface Area.png')
+
+        # LSTM Predictions vs Time
         plt.figure()
-        plt.plot(time_values_dlrnd, burn_rate_dlrnd_values)
-        plt.title("Burn Rate vs Time (Model: Deep Learning RND Methodology)")
+        plt.plot(range(len(lstm_predictions[0][0])), lstm_predictions[0][0])
+        plt.title("LSTM Predictions vs Time")
         plt.xlabel("Time")
-        plt.ylabel("Burn Rate")
-        plt.savefig('static/images/BurnRateDLRND.png')
+        plt.ylabel("Prediction")
+        plt.savefig('static/images/LSTM_Predictions.png')
+
+        # GRU Predictions vs Time
+        plt.figure()
+        plt.plot(range(len(gru_predictions[0])), gru_predictions[0])
+        plt.title("GRU Predictions vs Time")
+        plt.xlabel("Time")
+        plt.ylabel("Prediction")
+        plt.savefig('static/images/GRU_Predictions.png')
+
+
+
         
         os.chdir(os.getcwd())
         figs = os.listdir('static/images')
