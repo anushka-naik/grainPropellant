@@ -27,12 +27,14 @@
     let alertMessage = '';
     if (actionUrl === '/run_gru') {
         alertMessage = 
-        `1. CHECKPOINTS LOCATION: models\\gru\\checkpoints
+        `MODEL IS CREATED AND IS GETTING TRAINED! FILES ARE STORED AS BELOW:
+        1. CHECKPOINTS LOCATION: models\\gru\\checkpoints
         2. METRICS LOCATION: models\\gru\\metrics
         3. MODEL LOCATION: models\\gru`;
     } else if (actionUrl === '/run_lstm') {
         alertMessage = 
-        `1. CHECKPOINTS LOCATION: models\\lstm\\checkpoints
+        `MODEL IS CREATED AND IS GETTING TRAINED! FILES ARE STORED AS BELOW:
+        1. CHECKPOINTS LOCATION: models\\lstm\\checkpoints
         2. METRICS LOCATION: models\\lstm\\metrics
         3. MODEL LOCATION: models\\lstm`;
     }
@@ -115,30 +117,9 @@
             </div>
            </td>
            <td>
-                <!-- SVR Form -->
-                <div class="model-form">
-                    <h2>SVR</h2>
-                    <form id="svrForm" onsubmit="trainModel(event, '/run_svr')">
-                        <table>
-                            <tr>
-                                <td> Number of Epochs: </td>
-                                <td> <input type="number" name="num_epochs" value="100" placeholder="100" required> </td>
-                            </tr>
-                            <tr>
-                                <td> Batch Size: </td>
-                                <td> <input type="number" name="batch_size" value="32" placeholder="32" required> </td>
-                            </tr>
-                            <tr>
-                                <td> Save Frequency: </td>
-                                <td> <input type="number" name="save_frequency" value="5" placeholder="5" required> </td>
-                            </tr>
-
-                        </table>
+                
                         
-                        <button type="submit">Run SVR Model</button>
-                    </form>
-                </div>
-            </td>
+                        
         </tr>
     </table>
     
