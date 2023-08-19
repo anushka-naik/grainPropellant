@@ -132,3 +132,31 @@ label {
   width: 100%;
   text-align: center;
 }
+.button {
+  font-family: 'Roboto', sans-serif;
+  background-color: #A683E3;  /* Use the provided color */
+  border: none;
+  color: white;
+  padding: 15px 25px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 10px 2px;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: background-color 0.3s;
+}
+
+.button:hover {
+  background-color: #B899E8;  /* Slightly lighter shade for hover effect */
+}
+
+/* Add this for bottom and center alignment */
+.button-container {
+  position: absolute;
+  bottom: 20px;  /* 20px from the bottom */
+  left: 50%;     /* Center it horizontally */
+  transform: translateX(-50%); /* Move back by 50% of its width to truly center it */
+  text-align: center;
+}
